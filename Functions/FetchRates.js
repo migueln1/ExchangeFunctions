@@ -1,14 +1,13 @@
 exports.handler = async event => {
   event = event || {};
   const id = event.queryStringParameters.id || "ARS";
-  getRatesAsync(id).then(data => {
-      console.log(data)
-      return {
+  let result;
+  getRatesAsync(id).then(data => result = data)
+  
+   return {
         statusCode: 200,
-        body: JSON.stringify(data)
+        body: JSON.stringify(result)
       };
-    })
-    .catch(err=>console.log(err))
  
 }
 async function getRatesAsync(id) 
