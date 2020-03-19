@@ -9,7 +9,7 @@ exports.handler = async event => {
 }
 async function getRatesAsync(id) 
 {
-  let response = await fetch(`https://api.github.com/users/${id}`);
+  let response = await fetch(`https://api.exchangerate-api.com/v4/latest/${id}`);
   let data = await response.json()
   return data;
 }
