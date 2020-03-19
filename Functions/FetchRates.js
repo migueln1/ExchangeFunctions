@@ -1,12 +1,15 @@
-import { fetchRates } from './eurofx';
-
 exports.handler = async event => {
   event = event || {};
-  const rates = await fetchRates();
-  const currencies = Object.keys(rates[0]).filter(k => k !== 'Date');
-
+  const id = event.queryStringParameters.id || "World";
+  let rates = getRatesAsync(id)
   return {
     statusCode: 200,
-    body: JSON.stringify(currencies)
+    body: JSON.stringify(rates)
   };
+}
+async function getRatesAsync(id) 
+{
+  let response = await fetch(`https://api.github.com/users/${id}`);
+  let data = await response.json()
+  return data;
 }
