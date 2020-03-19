@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 exports.handler = async event => {
   event = event || {};
   const id = event.queryStringParameters.id || "ARS";
