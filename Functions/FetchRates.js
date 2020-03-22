@@ -6,7 +6,11 @@ exports.handler = async event => {
   
    return {
         statusCode: 200,
-        body: JSON.stringify(result)
+        body: JSON.stringify(result),
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000',
+          'Content-Type': 'application/json'
+        }
       };
  
 }
